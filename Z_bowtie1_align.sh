@@ -7,6 +7,6 @@ outname=$3
 module load python
 source activate rnaseq_basic
 
-bowtie2 -p 8 -x $index --norc -f --un ${outname}.unmapped.fa $fasta -S ${outname}.sam
+bowtie -p 8 -x $index -v 0 -a --norc -f $fasta --un unmapped.fa -S ${outname}.sam
 
 sam2bed < ${outname}.sam | cut -f1-6,12 > ${outname}.bed
